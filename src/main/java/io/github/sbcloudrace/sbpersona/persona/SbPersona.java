@@ -5,19 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name="SBPERSONA")
+@Table(name = "SBPERSONA")
 public class SbPersona {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private double boost;
     private double cash;
@@ -32,7 +31,11 @@ public class SbPersona {
     private int score;
     private long userId;
 
-    public long getPersonaId(){
+    public long getPersonaId() {
         return id;
+    }
+
+    public void setPersonaId(long id) {
+        this.id = id;
     }
 }
