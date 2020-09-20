@@ -16,18 +16,10 @@ public class SbPersonaController {
 
     private final SbPersonaRepository sbPersonaRepository;
 
-    @RequestMapping("/personaByUser/{userId}")
+    @RequestMapping("/personasByUser/{userId}")
     @ResponseBody
     public List<SbPersona> findByUserId(@PathVariable Long userId) {
         return sbPersonaRepository.findByUserId(userId);
     }
 
-    @RequestMapping("/personasIdsByUser/{userId}")
-    @ResponseBody
-    public List<Long> findIdsByUserId(@PathVariable Long userId) {
-        List<Long> personaIds = new ArrayList<>();
-        sbPersonaRepository.findByUserId(userId)
-                .forEach(sbPersona -> personaIds.add(sbPersona.getId()));
-        return personaIds;
-    }
 }
